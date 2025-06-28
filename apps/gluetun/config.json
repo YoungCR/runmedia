@@ -1,0 +1,124 @@
+{
+  "name": "Gluetun",
+  "id": "gluetun",
+  "available": true,
+  "short_desc": "VPN client in a thin Docker container for multiple VPN providers",
+  "author": "qdm12",
+  "port": 8082,
+  "categories": [
+    "utilities"
+  ],
+  "description": "Access your homeserver from anywhere even on your mobile device. Wireguard-easy is a simple tool to configure and manage Wireguard VPN servers. It is written in Go and uses the official Wireguard client. You have to open and redirect port 51820 to your homeserver in order to connect.",
+  "tipi_version": 1,
+  "version": "3.40.0",
+  "source": "ghcr.io/qdm12/gluetun:latest",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1751146232567,
+  "updated_at": 1751146232567,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "VPN Service Provider",
+      "required": true,
+      "options": [
+        {
+          "label": "AirVPN",
+          "value": "airvpn"
+        },
+        {
+          "label": "ProtonVPN",
+          "value": "protonvpn"
+        },
+        {
+          "label": "Nord VPN",
+          "value": "nord"
+        }
+      ],
+      "env_variable": "VPN_SERVICE_PROVIDER"
+    },
+    {
+      "type": "text",
+      "label": "VPN Type: OpenVPN or Wireguard",
+      "required": true,
+      "options": [
+        {
+          "label": "OpenVPN",
+          "value": "openvpn"
+        },
+        {
+          "label": "Wireguard",
+          "value": "wireguard"
+        }
+      ],
+      "env_variable": "VPN_TYPE"
+    },
+    {
+      "type": "text",
+      "label": "OpenVPN username",
+      "hint": "Required only if OpenVPN is choosen as VPN Type, otherwise leave blank",
+      "required": false,
+      "env_variable": "OPENVPN_USER"
+    },
+    {
+      "type": "password",
+      "label": "OpenVPN password",
+      "hint": "Required only if OpenVPN is choosen as VPN Type, otherwise leave blank",
+      "required": false,
+      "env_variable": "OPENVPN_USER"
+    },
+    {
+      "type": "password",
+      "label": "Wireguard Private Key",
+      "hint": "Required only if Wireguard is choosen as VPN Type, otherwise leave blank",
+      "required": false,
+      "env_variable": "WIREGUARD_PRIVATE_KEY"
+    },
+    {
+      "type": "ip",
+      "label": "Wireguard Addresses",
+      "hint": "Required only if Wireguard is choosen as VPN Type and neccessary for Service Provider, otherwise leave blank",
+      "required": false,
+      "env_variable": "WIREGUARD_ADDRESSES"
+    },
+    {
+      "type": "text",
+      "label": "Server Countries",
+      "hint": "You MUST provide at least one entry to the SERVER variables below per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
+      "required": false,
+      "env_variable": "SERVER_COUNTRIES"
+    },
+    {
+      "type": "text",
+      "label": "Server Regions",
+      "hint": "You MUST provide at least one entry to the SERVER variables per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
+      "required": false,
+      "env_variable": "SERVER_REGIONS"
+    },
+    {
+      "type": "text",
+      "label": "Server Cities",
+      "hint": "You MUST provide at least one entry to the SERVER variables per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
+      "required": false,
+      "env_variable": "SERVER_CITIES"
+    },
+    {
+      "type": "text",
+      "label": "Server Hostnames",
+      "hint": "You MUST provide at least one entry to the SERVER variables per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
+      "required": false,
+      "env_variable": "SERVER_HOSTNAMES"
+    },
+    {
+      "type": "text",
+      "label": "Server Hostnames",
+      "hint": "You MUST provide at least one entry to the SERVER variables per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
+      "required": false,
+      "env_variable": "SERVER_CATEGORIES"
+    }
+  ]
+}
