@@ -1,0 +1,86 @@
+
+{
+    "services": [
+      {
+        "name": "gluetun",
+        "image": "qmcgaw/gluetun:latest",
+        "environment": {
+          "TZ": "${TIMEZONE}",
+          "VPN_SERVICE_PROVIDER": "${VPN_SERVICE_PROVIDER}",
+          "OPENVPN_USER": "${VPN_USERNAME}",
+          "OPENVPN_PASSWORD": "${VPN_PASSWORD}",
+          "SERVER_COUNTRIES": "${SERVER_COUNTRIES}",
+          "SERVER_REGIONS": "${SERVER_REGIONS}",
+          "SERVER_CITIES": "${SERVER_CITIES}",
+          "SERVER_HOSTNAMES": "${SERVER_HOSTNAMES}",
+          "SERVER_CATEGORIES": "${SERVER_CATEGORIES}",
+          "FIREWALL_OUTBOUND_SUBNETS": "${LOCAL_SUBNET}",
+          "OPENVPN_CUSTOM_CONFIG": "${OPENVPN_CUSTOM_CONFIG}",
+          "HTTP_CONTROL_SERVER_ADDRESS": ":${GLUETUN_CONTROL_PORT}",
+          "VPN_TYPE": "${VPN_TYPE}",
+          "VPN_ENDPOINT_IP": "${VPN_ENDPOINT_IP}",
+          "VPN_ENDPOINT_PORT": "${VPN_ENDPOINT_PORT}",
+          "WIREGUARD_PUBLIC_KEY": "${WIREGUARD_PUBLIC_KEY}",
+          "WIREGUARD_PRIVATE_KEY": "${WIREGUARD_PRIVATE_KEY}",
+          "WIREGUARD_PRESHARED_KEY": "${WIREGUARD_PRESHARED_KEY}",
+          "WIREGUARD_ADDRESSES": "${WIREGUARD_ADDRESSES}",
+          "HTTPPROXY": "on",
+          "SHADOWSOCKS": "on"
+        },
+        "internalPort": 8888,
+        "addPorts": [
+          {
+            "containerPort": 8388,
+            "hostPort": 8388,
+            "tcp": true,
+            "udp": false
+          },
+          {
+            "containerPort": 8388,
+            "hostPort": 8388,
+            "tcp": false,
+            "udp": true
+          },
+          {
+            "containerPort": 8320,
+            "hostPort": 8320,
+            "tcp": true,
+            "udp": false
+          },
+          {
+            "containerPort": 8080,
+            "hostPort": 8100,
+            "tcp": true,
+            "udp": false
+          },
+          {
+            "containerPort": 8200,
+            "hostPort": 8200,
+            "tcp": true,
+            "udp": false
+          },
+          {
+            "containerPort": 6881,
+            "hostPort": 6881,
+            "tcp": true,
+            "udp": false
+          }
+        ],
+        "volumes": [
+          {
+            "hostPath": "${APP_DATA_DIR}/gluetun",
+            "containerPath": "/gluetun",
+            "readOnly": false,
+            "shared": false,
+            "private": false
+          }
+        ],
+        "devices": [
+          "/dev/net/tun:/dev/net/tun"
+        ],
+        "capAdd": [
+          "NET_ADMIN"
+        ]
+      }
+    ]
+  }
