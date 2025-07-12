@@ -68,7 +68,7 @@
         ],
         "volumes": [
           {
-            "hostPath": "${APP_DATA_DIR}/gluetun",
+            "hostPath": "${APP_DATA_DIR}/data",
             "containerPath": "/gluetun",
             "readOnly": false,
             "shared": false,
