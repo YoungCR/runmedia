@@ -115,7 +115,7 @@
     },
     {
       "type": "text",
-      "label": "Server Hostnames",
+      "label": "Server Categories",
       "hint": "You MUST provide at least one entry to the SERVER variables per your provider settings, If you want to add more than one entry per line, use comma separated values: one,two,three etc...",
       "required": false,
       "env_variable": "SERVER_CATEGORIES"
